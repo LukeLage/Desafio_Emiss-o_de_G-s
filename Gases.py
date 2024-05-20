@@ -2,8 +2,6 @@
 import pandas as pd #Biblioteca para processamento de dados
 import plotly.express as px #Biblioteca para criação de gráficos
 import streamlit as st #Biblioteca para criação de servidor web
-from plotly.subplots import make_subplots #Módulo usado para fazer subplots com diversos gráficos
-import plotly.graph_objects as go #Biblioteca usada para fazer subplots
 
 
 # Configurações gerais da aplicação
@@ -55,12 +53,23 @@ setores = {
 } 
 setores_df = pd.DataFrame(setores)
 
+# Função com a explicação sobre o que é gás carbono
+def gas_carbono():
+    st.title ('O que é o Gás Carbono?')
+    st.write ('Também é conhecido como dióxido de carbono, sua formula química é a a CO₂, é encontrado em temperatura ambiente, transparente, mas absorve radiação infravermelha, dessa forma, agindo como um gás do efeito estuda, uma das consequências disso é que o gás carbono é um dos principais causadores de mudanças climáticas atualmente.')
+    st.write ('A principal causa da emissão desse gás é a queima de combustíveis fósseis, mas também pode ser liberado por respiração e decomposição de seres vivos, erupção vulcânica, queimadas e desmatamentos, processamentos industriais, além de também refinaria de petróleo, produção de aço e cimento.')
+    st.title ('O que o Gás Carbono Causa?')
+    st.write ('Principalmente, o aumento de gás carbono na atmosfera altera condições climáticas mundiais, dentro disso, o aquecimento do oceano que é responsável pela regulação do clima, também causa chuva ácida.')
+    st.write ('Mas uma das principais consequências é o desequilíbrio do efeito estufa, assim, consequentemente elevando a temperatura da terra causando um efeito dominó com catástrofes climáticas, o que, por sua vez, já causou a extinção de diversas espécies da fauna e da')
 
 # Funções usadas para montar os gráficos para melhor organização de código, para descrições específicas de cada função, ver comentário ao lado da def
 
 # Função para criação dos gráficos usados para visualização dos países que mais produzem gás carbono
-fig = make_subplots(rows=2, cols=1)  # Criação de subplots
-fig.add_trace(go.bar)
+def paises_emissao_porcentagem (): #Porcentagem dos países que mais emitem
+    fig = px.pie(paises_df, values = 'Porcentagem', names = 'Países', title = 'Porcentagem Top 10 Países que mais Emitem Gás Carbono') #Relação país/porcentagem
+
+def paises_emissao_toneladas(): #Toneladas de emissão
+    fig = px.pie(paises_df, values= 'Toneladas', names = 'Países', title = 'Toneladas Emitidas por Ano pelos Top 10') #Relação país/toneladas
 
 
 # Função para carregar o gráfico de barra representando toneladas de gás carbono emitido
@@ -69,6 +78,6 @@ def emissao_gas ():
 
 # Função para carregar o gráfico de pizza representando os setores que mais emitem gás carbono
 def setores_emissao (): 
-    fig = px.pie(setores_df, values = 'Porcentagem', names = 'Setores', title='Emissão de Gás Carbono (por bilhão) por Setor' , color_discrete_sequence = px.colors.qualitative.bold)
+    fig = px.pie(setores_df, values = 'Porcentagem', names = 'Setores', title='Emissão de Toneladas de Gás Carbono (por bilhão) por Setor' , color_discrete_sequence = px.colors.qualitative.bold)
 
 # Botões para apresentação dos gráficos que aparecerão na tela, para ver qual botão é referente à qual gráfico, ver comentário ao lado de cada função
