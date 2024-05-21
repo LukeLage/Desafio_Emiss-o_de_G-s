@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="Emissão de Gas Carbônico na Atmosfera",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 # Carregamento de estilização CSS vinda da pasta Gases.css
@@ -67,10 +67,8 @@ def gas_carbono():
 # Função para criação dos gráficos usados para visualização dos países que mais produzem gás carbono
 def paises_emissao_porcentagem (): #Porcentagem dos países que mais emitem
     fig = px.pie(paises_df, values = 'Porcentagem', names = 'Países', title = 'Porcentagem Top 10 Países que mais Emitem Gás Carbono') #Relação país/porcentagem
-
 def paises_emissao_toneladas(): #Toneladas de emissão
     fig = px.pie(paises_df, values= 'Toneladas', names = 'Países', title = 'Toneladas Emitidas por Ano pelos Top 10') #Relação país/toneladas
-
 
 # Função para carregar o gráfico de barra representando toneladas de gás carbono emitido
 def emissao_gas (): 
