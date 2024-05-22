@@ -3,6 +3,14 @@ import pandas as pd #Biblioteca para processamento de dados
 import plotly.express as px #Biblioteca para criação de gráficos
 import streamlit as st #Biblioteca para criação de servidor web
 
+# Configurações gerais da aplicação
+st.set_page_config(
+    page_title="Emissão de Gas Carbônico na Atmosfera",
+    page_icon="💨",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 # DataFrames feitos com Pandas das informações que serão usadas nos gráficos, para ver qual arquivo será qual gráfico, ver comentário a cima de cada função
 
 # Dicionário usado para fazer o DataFrame dos países com maior taxa de emissão de gás carbono
@@ -51,14 +59,6 @@ with open ('Gases.css', 'r') as fp:
     st.markdown(f"<style>{fp.read()}</style>", unsafe_allow_html=True)
 
 
-# Configurações gerais da aplicação
-st.set_page_config(
-    page_title="Emissão de Gas Carbônico na Atmosfera",
-    page_icon="💨",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
-
 # Criação da sidebar com informações sobre o criador da aplicação
 
 with st.sidebar:
@@ -80,6 +80,7 @@ st.write ('Use os botões na barra lateral para alterar a visualização de grá
 st.header('Mas afinal!')
 st.header('O que é esse gás carbono?')
 
+
 with st.container():
     # Função com a explicação sobre o que é gás carbono e o que causa para separar em duas colunas
     def gas_carbono():
@@ -91,11 +92,26 @@ with st.container():
         st.write ('Principalmente, o aumento de gás carbono na atmosfera altera condições climáticas mundiais, dentro disso, o aquecimento do oceano que é responsável pela regulação do clima, também causa chuva ácida.')
         st.write ('Mas uma das principais consequências é o desequilíbrio do efeito estufa, assim, consequentemente elevando a temperatura da terra causando um efeito dominó com catástrofes climáticas, o que, por sua vez, já causou a extinção de diversas espécies da fauna e da')
 
+
 # Separação do texto de apresentação em colunas
 col1, col2 = st.columns(2)
 
 # Exibição do texto em duas colunas
-with col1: # O que é o gás carbono
+with col1:  # O que é o gás carbono
     gas_carbono()
-with col2: # COnsequências do gás carbono
+with col2:  # COnsequências do gás carbono
     consequencias()
+
+# Dashboard da página inicial
+graphic1, graphic2 = st.columns(2)
+graphic3, graphic4 = st.columns(2)
+
+# Exibição das colunas
+with graphic1:
+    paises_emissao_porcentagem()
+with graphic2:
+    paises_emissao_toneladas()
+with graphic3:
+    emissao_gas()
+with graphic4:
+    setores_emissao()
