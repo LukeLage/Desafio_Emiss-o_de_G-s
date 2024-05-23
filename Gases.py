@@ -58,7 +58,9 @@ def setores_emissao ():
 with open ('Gases.css', 'r') as fp: 
     st.markdown(f"<style>{fp.read()}</style>", unsafe_allow_html=True)
 
-
+# Área para criação de colunas para botões de navegações entre os gráficos
+button1, button2 = st.columns (2)
+button3, button4, button5 = st.columns(3)
 
 # Side bar com navegação entre gráficos e informações sobre o desenvolvedor da aplicação
 with st.sidebar:
