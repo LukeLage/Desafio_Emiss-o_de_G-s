@@ -59,16 +59,20 @@ with open ('Gases.css', 'r') as fp:
     st.markdown(f"<style>{fp.read()}</style>", unsafe_allow_html=True)
 
 
-# Criação da sidebar com informações sobre o criador da aplicação
 
+# Side bar com navegação entre gráficos e informações sobre o desenvolvedor da aplicação
 with st.sidebar:
+     # Botões para apresentação dos gráficos que aparecerão na tela, para ver qual botão é referente à qual gráfico, ver comentário ao lado de cada função
+    st.title('Gráficos')
+
+    #Informações sobre o desenvolvedor da aplicação
+    # Colocar o robozinho do desenvolve aqui como marcação
     st.title('Quem sou eu?')
     st.write('Programador: Luke Malaquias Lage')
     st.write('PDITA: 172')
     st.write('Especialidade: programador backend e frontend')
     
-    # Botões para apresentação dos gráficos que aparecerão na tela, para ver qual botão é referente à qual gráfico, ver comentário ao lado de cada função
-    st.title('Gráficos')
+   
 
 
 # Página inicial da aplicação, apresentação do que se trata
@@ -78,8 +82,6 @@ st.write ('Essa aplicação revolve em torno da exposição da emissão de gás 
 st.write ('Use os botões na barra lateral para alterar a visualização de gráficos!')
 
 st.header('Mas afinal!')
-st.header('O que é esse gás carbono?')
-
 
 with st.container():
     # Função com a explicação sobre o que é gás carbono e o que causa para separar em duas colunas
