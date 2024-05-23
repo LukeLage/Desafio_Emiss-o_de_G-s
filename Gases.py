@@ -40,13 +40,14 @@ setores_df = pd.DataFrame(setores)
 # Função para criação dos gráficos usados para visualização dos países que mais produzem gás carbono
 def paises_emissao_porcentagem (): #Porcentagem dos países que mais emitem
     fig = px.pie(paises_df, values = 'Porcentagem', names = 'Países', title = 'Porcentagem Top 10 Países que mais Emitem Gás Carbono') #Relação país/porcentagem
+    st.plotly_chart(fig)
 def paises_emissao_toneladas(): #Toneladas de emissão
     fig = px.pie(paises_df, values= 'Toneladas', names = 'Países', title = 'Toneladas Emitidas por Ano pelos Top 10') #Relação país/toneladas
     st.plotly_chart(fig)
 
 # Função para carregar o gráfico de barra representando toneladas de gás carbono emitido
 def emissao_gas (): 
-    fig = px.bar(emissao_df, x = 'Anos', y = 'Toneladas em Bilhões', title = 'Emissão de Gás Carbono por Anos em Toneladas')
+    fig = px.line(emissao_df, x = 'Anos', y = 'Toneladas em Bilhões', title = 'Emissão de Gás Carbono por Anos em Toneladas')
     st.plotly_chart(fig)
 
 # Função para carregar o gráfico de pizza representando os setores que mais emitem gás carbono
@@ -59,29 +60,65 @@ with open ('Gases.css', 'r') as fp:
     st.markdown(f"<style>{fp.read()}</style>", unsafe_allow_html=True)
 
 # Área para criação de colunas para botões de navegações entre os gráficos
-button1, button2 = st.columns (2)
-button3, button4, button5 = st.columns(3)
+# Criação de colunas para separação de dois gráficos ao apertar o botão
+paises1, paises2 = st.columns(2)
 
 # Side bar com navegação entre gráficos e informações sobre o desenvolvedor da aplicação
 with st.sidebar:
-     # Botões para apresentação dos gráficos que aparecerão na tela, para ver qual botão é referente à qual gráfico, ver comentário ao lado de cada função
-    st.title('Gráficos')
-
-    #Informações sobre o desenvolvedor da aplicação
+    # Botões para apresentação dos gráficos que aparecerão na tela, para ver qual botão é referente à qual gráfico, ver nome de cada botão
+    st.title('Navegação pelos Gráficos')
+    st.write('Para navegação entre gráficos, por favor selecione o desejado nos botões a seguir:')
+    button1 = st.button('Emissão por Setor')
+    button2 = st.button('Emissão por de Toneladas por Ano')
+    button3 = st.button('Emissão por País')
+    button4 = st.button('Emissão por País em Toneladas')
+    button5 = st.button('Emissão por por País em Porcentagem')
+    button6 = st.button('Fechar Gráficos')
+    # Informações sobre o desenvolvedor da aplicação
     # Colocar o robozinho do desenvolve aqui como marcação
     st.title('Quem sou eu?')
-    st.write('Programador: Luke Malaquias Lage')
+    #st.write('Programador: Luke Malaquias Lage')
     st.write('PDITA: 172')
     st.write('Especialidade: programador backend e frontend')
-    
-   
+    st.write("Contato: linkedin.com/in/luke-malaquias-lage-04022a232/")
 
+# Funções para a exibição de gráficos durante as navegações
+
+if button1:
+    st.header('Emissão Anual de Gases por Setor Industrial')
+    st.write('Esse gráfico remete à média emissão de gases por ano por diversos setores industriais.')
+    st.write('No gráfico houve uma pequena simplificação em algumas partes para melhor observação visual, as repartições serão melhores explicadas.')
+    st.write('Energia remete à elétrica, petróleo e carvão;')
+    st.write('Terra remete ao uso, mudança de uso da terra e silvicultura;')
+    st.write('Resíduos remete à praticamente todo resíduo humano, incluindo aterros e águas residuais.')
+    setores_emissao()
+if button2: 
+    st.header('Emissão de Anual de Gases desde 1950')
+    st.write('Esse gráfico remete à emissão de gás carbono por toneladas emitidos por ano desde os primeiros registros feitos com precisão, em 1950.')
+    emissao_gas()
+if button3: 
+    st.header('Emissão de Gases por País, em Toneladas e em Porcentagem')
+    st.write('Esses dois gráficos remetem à emissão de gás carbono por país, principalmente os dez principais que mais emitem esse gás anualmente. Juntos, esses países emitem em média 68,5% e 37702,16 de toneladas do gás carbono produzido por todo o mundo, anualmente.')
+    st.title ('Emissão em Toneladas')
+    paises_emissao_toneladas()
+    st.title('Emissão em Porcentagem')
+    paises_emissao_porcentagem()
+if button4: 
+    st.header('Emissão de Gases em Toneladas por País')
+    st.write('Esse gráfico, em específico, remete à emissão de gases por toneladas emitida pelos top 10 países com maior taxa de produção de gases mundialmente')
+    paises_emissao_toneladas()
+if button5:
+    st.header('Emissão de Gases em Porcentagem por País')
+    st.write('Este gráfico exibe a emissão de gases por porcentagem com foco nos principais dez países com maior taxa de produção.')
+    paises_emissao_porcentagem()
+else:
+    st.empty()
 
 # Página inicial da aplicação, apresentação do que se trata
 st.title ('Emissão de Gás Carbono na Atmosfera')
 
 st.write ('Essa aplicação revolve em torno da exposição da emissão de gás carbônico na atmosfera desde a era da revolução industrial e quais, nesse momento, são os maiores emissores')
-st.write ('Use os botões na barra lateral para alterar a visualização de gráficos!')
+st.write ('O objetivo da criação desse dashboard foi para a existência de uma discussão sobre o aumento da nossa poluição, como humanidade e como, com o passar dos anos, mesmo com os acordos entre países para a diminuição da emissão de gases, eles apenas crescem cada vez mais na atmosfera')
 
 st.header('Mas afinal!')
 
@@ -99,7 +136,6 @@ with st.container():
 
 # Separação do texto de apresentação em colunas
 col1, col2 = st.columns(2)
-
 # Exibição do texto em duas colunas
 with col1:  # O que é o gás carbono
     gas_carbono()
@@ -107,6 +143,43 @@ with col2:  # COnsequências do gás carbono
     consequencias()
 
 # Dashboard da página inicial
+st.header("Dashboard")
+st.write('Apresentação de todos os gráficos disponíveis para informação nesse banco de dados.')
+st.write('Para informações mais específicas, selecione o gráfico desejado na barra lateral.')
+
+# Repetição de exibição de gráficos vindos da navegação por botões, para que apareça também no dashboard
+if button1:
+    st.header('Emissão Anual de Gases por Setor Industrial')
+    st.write('Esse gráfico remete à média emissão de gases por ano por diversos setores industriais.')
+    st.write('No gráfico houve uma pequena simplificação em algumas partes para melhor observação visual, as repartições serão melhores explicadas.')
+    st.write('Energia remete à elétrica, petróleo e carvão;')
+    st.write('Terra remete ao uso, mudança de uso da terra e silvicultura;')
+    st.write('Resíduos remete à praticamente todo resíduo humano, incluindo aterros e águas residuais.')
+    setores_emissao()
+if button2: 
+    st.header('Emissão de Anual de Gases desde 1950')
+    st.write('Esse gráfico remete à emissão de gás carbono por toneladas emitidos por ano desde os primeiros registros feitos com precisão, em 1950.')
+    emissao_gas()
+if button3: 
+    st.header('Emissão de Gases por País, em Toneladas e em Porcentagem')
+    st.write('Esses dois gráficos remetem à emissão de gás carbono por país, principalmente os dez principais que mais emitem esse gás anualmente. Juntos, esses países emitem em média 68,5% e 37702,16 de toneladas do gás carbono produzido por todo o mundo, anualmente.')
+    st.title ('Emissão em Toneladas')
+    paises_emissao_toneladas()
+    st.title('Emissão em Porcentagem')
+    paises_emissao_porcentagem()
+if button4: 
+    st.header('Emissão de Gases em Toneladas por País')
+    st.write('Esse gráfico, em específico, remete à emissão de gases por toneladas emitida pelos top 10 países com maior taxa de produção de gases mundialmente')
+    paises_emissao_toneladas()
+if button5:
+    st.header('Emissão de Gases em Porcentagem por País')
+    st.write('Este gráfico exibe a emissão de gases por porcentagem com foco nos principais dez países com maior taxa de produção.')
+    paises_emissao_porcentagem()
+else:
+    st.empty()
+
+
+# Separação das colunas dos gráficos
 graphic1, graphic2 = st.columns(2)
 graphic3, graphic4 = st.columns(2)
 
