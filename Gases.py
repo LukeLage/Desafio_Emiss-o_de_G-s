@@ -11,53 +11,67 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Carregamento de estilização CSS vinda da pasta Gases.css
+with open("Gases.css", "r") as fp:
+    css = fp.read()  # Lê o conteúdo do arquivo CSS
+    st.write(f"<style>{css}</style>", unsafe_allow_html=True)
+
 # DataFrames feitos com Pandas das informações que serão usadas nos gráficos, para ver qual arquivo será qual gráfico, ver comentário a cima de cada função
 
-# Dicionário usado para fazer o DataFrame dos países com maior taxa de emissão de gás carbono
-paises = { 
-    'Países': ['China', 'Estados Unidos', 'União Europeia', 'Índia', 'Rússia', 'Japão', 'Brasil', 'Indonésia', 'Iran', 'Coreia do Sul', 'Demais países'],
-    'Porcentagem': [25.76, 12.8, 7.8, 6.74, 5.26, 2.73, 2.28, 1.88, 1.74, 1.51, 31.51],
-    'Toneladas': [11886.76, 5907.3, 3598.1, 3109.3, 2427.2, 1259.4, 5150.3, 866, 800.8, 697, 14538.7]
-} 
-paises_df = pd.DataFrame(paises)
+# Dicionários usado para fazer o DataFrame dos países com maior taxa de emissão de gás carbono, um para porcentagem e o outro para tonelada
+paises_tonelada = pd.read_csv ('Toneladas.csv')
+toneladas_df = pd.DataFrame(paises_tonelada)
+
+paises_porcentagem = pd.read_csv('Porcentagem.csv')
+porcentagem_df = pd.DataFrame(paises_porcentagem)
 
 # Dicionário usado para fazer o DataFrame com a quantidade de gás carbono emitido em bilhões ao longo dos anos
-emissao_ano = {
-    'Anos': [1949, 1950, 1989, 2000, 2019, 2021],
-    'Toneladas em Bilhões': [4, 6, 22, 25, 36.4, 37]
-} 
+emissao_ano = pd.read_csv('Emissão.csv')
 emissao_df = pd.DataFrame(emissao_ano)
 
 # Dicionário usado para fazer o DataFrame com os setores que mais emitem gás carbono atualmente
-setores = {
-    'Setores': ['Energia', 'Agropecuária', 'Terra', 'Resíduos'],
-    'Porcentagem': [73, 12, 6.5, 3.2]
-} 
+setores = pd.read_csv('Setores.csv') 
 setores_df = pd.DataFrame(setores)
 
 # Funções usadas para montar os gráficos para melhor organização de código, para descrições específicas de cada função, ver comentário ao lado da def
 
 # Função para criação dos gráficos usados para visualização dos países que mais produzem gás carbono
-def paises_emissao_porcentagem (): #Porcentagem dos países que mais emitem
-    fig = px.pie(paises_df, values = 'Porcentagem', names = 'Países', title = 'Porcentagem Top 10 Países que mais Emitem Gás Carbono') #Relação país/porcentagem
+def paises_porcentagem (): #Porcentagem dos países que mais emitem
+    fig = px.pie(porcentagem_df,
+        values = 'Porcentagem',  # Removed the space before 'Porcentagem'
+        names = 'Países',
+        title = 'Porcentagem Top 10 Países que mais Emitem Gás Carbono',
+)
+
     st.plotly_chart(fig)
 def paises_emissao_toneladas(): #Toneladas de emissão
-    fig = px.pie(paises_df, values= 'Toneladas', names = 'Países', title = 'Toneladas Emitidas por Ano pelos Top 10') #Relação país/toneladas
+    fig = px.pie(toneladas_df, 
+        values = 'Toneladas', 
+        names = 'Países', 
+        title = 'Toneladas Emitidas por Ano pelos Top 10'
+    ) #Relação país/toneladas
     st.plotly_chart(fig)
 
 # Função para carregar o gráfico de barra representando toneladas de gás carbono emitido
 def emissao_gas (): 
-    fig = px.line(emissao_df, x = 'Anos', y = 'Toneladas em Bilhões', title = 'Emissão de Gás Carbono por Anos em Toneladas')
+    fig = px.line(
+        emissao_df, 
+        x = 'Anos', 
+        y = 'Toneladas', 
+        title = 'Emissão de Gás Carbono por Anos em Toneladas'
+    )
     st.plotly_chart(fig)
 
 # Função para carregar o gráfico de pizza representando os setores que mais emitem gás carbono
 def setores_emissao (): 
-    fig = px.pie(setores_df, values = 'Porcentagem', names = 'Setores', title='Emissão de Toneladas de Gás Carbono (por bilhão) por Setor')
-    st.plotly_chart(fig)
+    fig = px.bar(
+        setores_df,
+        x="Setores",
+        y="Porcentagem",
+        title="Emissão de Gás de Diversos",
+    )
 
-# Carregamento de estilização CSS vinda da pasta Gases.css
-with open ('Gases.css', 'r') as fp: 
-    st.markdown(f"<style>{fp.read()}</style>", unsafe_allow_html=True)
+    st.plotly_chart(fig)
 
 # Área para criação de colunas para botões de navegações entre os gráficos
 # Criação de colunas para separação de dois gráficos ao apertar o botão
@@ -102,7 +116,7 @@ if button3:
     st.title ('Emissão em Toneladas')
     paises_emissao_toneladas()
     st.title('Emissão em Porcentagem')
-    paises_emissao_porcentagem()
+    paises_porcentagem()
 if button4: 
     st.header('Emissão de Gases em Toneladas por País')
     st.write('Esse gráfico, em específico, remete à emissão de gases por toneladas emitida pelos top 10 países com maior taxa de produção de gases mundialmente')
@@ -110,7 +124,7 @@ if button4:
 if button5:
     st.header('Emissão de Gases em Porcentagem por País')
     st.write('Este gráfico exibe a emissão de gases por porcentagem com foco nos principais dez países com maior taxa de produção.')
-    paises_emissao_porcentagem()
+    paises_porcentagem()
 else:
     st.empty()
 
@@ -166,7 +180,7 @@ if button3:
     st.title ('Emissão em Toneladas')
     paises_emissao_toneladas()
     st.title('Emissão em Porcentagem')
-    paises_emissao_porcentagem()
+    paises_porcentagem()
 if button4: 
     st.header('Emissão de Gases em Toneladas por País')
     st.write('Esse gráfico, em específico, remete à emissão de gases por toneladas emitida pelos top 10 países com maior taxa de produção de gases mundialmente')
@@ -174,18 +188,18 @@ if button4:
 if button5:
     st.header('Emissão de Gases em Porcentagem por País')
     st.write('Este gráfico exibe a emissão de gases por porcentagem com foco nos principais dez países com maior taxa de produção.')
-    paises_emissao_porcentagem()
+    paises_porcentagem()
 else:
     st.empty()
-
 
 # Separação das colunas dos gráficos
 graphic1, graphic2 = st.columns(2)
 graphic3, graphic4 = st.columns(2)
 
+
 # Exibição das colunas
 with graphic1:
-    paises_emissao_porcentagem()
+    paises_porcentagem()
 with graphic2:
     paises_emissao_toneladas()
 with graphic3:
