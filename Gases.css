@@ -1,3 +1,9 @@
-.stApp > header {
-    background-color: transparent;
+[data-testid="stFullScreenFrame"]{
+    text-align: center;
+}
+
+[data-testid="stMetric"]{
+    border-radius: 15px;
+    border-color: darkgrey;
+    border-style: double;
 }
