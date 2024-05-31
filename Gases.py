@@ -1,6 +1,7 @@
 # Processamento de bibliotecas usadas no código, uso de cada no comentário ao lado da importação
 import pandas as pd #Biblioteca para processamento de dados
 import plotly.express as px #Biblioteca para criação de gráficos
+import plotly.graph_objects as go # Biblioteca para criação de gráficos
 import streamlit as st #Biblioteca para criação de servidor web
 
 # Configurações gerais da aplicação
@@ -18,12 +19,10 @@ with open("Gases.css", "r") as fp:
 
 # DataFrames feitos com Pandas das informações que serão usadas nos gráficos, para ver qual arquivo será qual gráfico, ver comentário a cima de cada função
 
-# Dicionários usado para fazer o DataFrame dos países com maior taxa de emissão de gás carbono, um para porcentagem e o outro para tonelada
-paises_tonelada = pd.read_csv ('Toneladas.csv')
-toneladas_df = pd.DataFrame(paises_tonelada)
+# Dicionário usado para fazer o DataFrame dos países com maior taxa de emissão de gás carbono
+emissao_paises = pd.read_csv ('Países.csv')
+paises_df = pd.DataFrame(emissao_paises)
 
-paises_porcentagem = pd.read_csv('Países.csv')
-porcentagem_df = pd.DataFrame(paises_porcentagem)
 
 # Dicionário usado para fazer o DataFrame com a quantidade de gás carbono emitido em bilhões ao longo dos anos
 emissao_ano = pd.read_csv('Emissão.csv')
@@ -39,10 +38,10 @@ setores_df = pd.DataFrame(setores)
 # Função para criação dos gráficos usados para visualização dos países que mais produzem gás carbono
 def paises():
     fig = px.scatter(
-        x=porcentagem_df["Países"],
-        y=porcentagem_df["Porcentagem"],
-        color=porcentagem_df["Toneladas"], 
-        size=porcentagem_df["Porcentagem"],
+        x = paises_df ['Países'], # Utilize a variável correta ou verifique o nome da coluna
+        y = paises_df ['Porcentagem'],
+        color = paises_df ['Toneladas'], 
+        size = paises_df ['Porcentagem'],
         labels={"x": "Países", "y": "Porcentagem", "color": "Toneladas"},
         title="Dez Países que Mais Emitem Gás Carbono",
     )
@@ -64,7 +63,7 @@ def setores_emissao ():
         setores_df,
         x="Setores",
         y="Porcentagem",
-        title="Emissão de Gás de Diversos",
+        title="Emissão de Gás de Diversos Setores",
     )
     st.plotly_chart(fig)
 
@@ -78,7 +77,7 @@ with st.sidebar:
     st.title('Navegação')
     option = st.selectbox(
         'Navegue entre gráficos para encontrar informações específicas sobre cada um deles',
-        ('Emissão por Setor', 'Emissão de Tonelada por Ano', 'Emissão por País', 'Emissão por País em Toneladas', 'Emissão por País em Porcentagem', 'Fechar Gráficos'),
+        ('Emissão por Setor', 'Emissão de Tonelada por Ano', 'Emissão por País', 'Fechar Gráficos'),
         index = None,
         placeholder = 'Selecione um Gráfico'
     )
@@ -89,28 +88,74 @@ with st.sidebar:
         ['Sim!', 'Não!'],
         index = None
     )
-    
+
     # Botões para exibição e exclusão de informações sobre o que é o Gás Carbono]
     info = st.radio(
         "Você sabe o que é o gás ou o que ele causa?",
         ["O que é?", "O que Causa?", "Fechar Informações"],
         index=None,
     )
-    
+
+    # Navegação para a alteração do país que será exibido a emissão de gás carbono
+    nav_pais = st.select_slider(
+        'Navegue por esta barra para alterar a exibição da emissão de gás de países específicos',
+        ['China', 'Estados Unidos', 'União Europeia', 'Índia', 'Rússia', 'Japão', 'Brasil', 'Indonésia', 'Iran', 'Coreia do Sul']
+    )
+
     # Informações sobre o desenvolvedor da aplicação
     # Colocar o robozinho do desenvolve aqui como marcação
     st.title('Quem sou eu?')
     st.write('Programador: Luke Malaquias Lage')
     st.write('PDITA: 172')
 
+# Código usado para renderização dos dados para a segunda métrica do dashboard
+
+pais_selecionado = nav_pais.lower()  # Converte o país para minúscula
+pais_df = paises_df.loc[paises_df["Países"].str.lower() == pais_selecionado]
+
+emissao_pais = pais_df['Toneladas'].values[0]  # Assume que há apenas um valor de emissão
+
+
 # Container de métricas sobre emissão de gás carbono, para ver qual métrica representa o que, ver comentário ao lado da métrica
 
-# metric1, metric2, metric3 = st.columns(3)
-# metric1.metric (
-# label = 'Aumento desde a primeira medição'
-# )
 
-# Funções para a exibição de gráficos durante as navegações
+metric1, metric2, metric3 = st.columns(3)
+metric1.metric(
+    label="Produção de Gás Carbono por Ano", 
+    value="52240.86 Toneladas"
+)  # Métrica de produção de gás carbono anualmente
+
+metric2.metric (
+    label = 'Emissão de Gás Carbono por País em Toneladas',
+    value = emissao_pais
+)
+
+metric3.metric (
+    label = 'Primeira Medição de Gás Registrada',
+    value = "6 Toneladas"
+)
+
+# Funções para a criação de interatividade de um gráfico que irá aparecer ao selecionar a emissão por ano
+
+def comparacao_ano():
+    year = st.select_slider(
+        'Selecione o ano que você deseja ver a comparação com a primeira medição',
+        [1949, 1950, 1989, 2000, 2019, 2021]
+    )
+    emissao_ano_filtro = emissao_df [emissao_df['Anos'] == year] # Filtra o dataframe por ano 
+    emissao_ano = emissao_ano_filtro['Toneladas'].iloc[0]
+    
+    primeira_emissao = emissao_df ['Toneladas'].min() # Pega o menor número do arquivo csv e transforma na primeira emissão
+
+    fig = go.Figure(  # Exibição do gráfico
+        go.Indicator(
+            mode="gauge + number + delta",
+            value = emissao_ano,
+            title = {"text": "Comparação Anual Desde a Primeira Mediação"},
+            delta = {"reference": primeira_emissao},
+        )
+    )
+    st.plotly_chart(fig)
 
 if option == "Emissão por Setor":
     st.header('Emissão Anual de Gases por Setor Industrial')
@@ -123,18 +168,13 @@ if option == "Emissão por Setor":
 elif option == "Emissão de Tonelada por Ano":
     st.header('Emissão de Anual de Gases desde 1950')
     st.write('Esse gráfico remete à emissão de gás carbono por toneladas emitidos por ano desde os primeiros registros feitos com precisão, em 1950.')
-    emissao_gas()
+    comparacao_ano()
 elif option == 'Emissão por País':
-    st.header('Emissão de Gases por País, em Toneladas e em Porcentagem')
-    st.write('Esses dois gráficos remetem à emissão de gás carbono por país, principalmente os dez principais que mais emitem esse gás anualmente. Juntos, esses países emitem em média 68,5% e 37702,16 de toneladas do gás carbono produzido por todo o mundo, anualmente.')
-    st.title ('Emissão em Toneladas')
+    st.header('Emissão de Gases por País')
+    st.write('Esse gráfico remete à emissão de gás carbono por país, principalmente os dez principais que mais causam a emissão deste gás anualmente, os dados expõe tanto a porcentagem quanto a quantidade em toneladas desses dados.',)
+    st.write('Juntos esses países emitem em média, 68,5% e 37702,16 de toda a emissão mundial em um ano')
+    st.write('As cores do gráfico ficam cada vez mais escuras a medida que a quantidade em porcentagem de emissão de gases aumenta.')
     paises()
-    st.title('Emissão em Porcentagem')
-    paises_porcentagem()
-elif option == "Emissão por País em Porcentagem":
-    st.header('Emissão de Gases em Porcentagem por País')
-    st.write('Este gráfico exibe a emissão de gases por porcentagem com foco nos principais dez países com maior taxa de produção.')
-    paises_porcentagem()
 else:
     st.empty()
 
