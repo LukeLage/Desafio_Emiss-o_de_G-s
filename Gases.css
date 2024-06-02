@@ -1,9 +1,30 @@
-[data-testid="stFullScreenFrame"]{
-    text-align: center;
-}
-
 [data-testid="stMetric"]{
     border-radius: 15px;
     border-color: darkgrey;
     border-style: double;
+}
+
+[data-testid="stMetricLabel"]{
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0 auto;
+}
+
+[data-testid="stMetricValue"]{
+    text-align: center;
+    padding-right: 30px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+[data-testid="stFullScreenFrame"] {
+    text-align: center;
+}
+
+.subtitles{
+    font-size: 15px;
 }
