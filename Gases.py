@@ -77,7 +77,7 @@ with st.sidebar:
     st.title('Navegação')
     option = st.selectbox(
         'Navegue entre gráficos para encontrar informações específicas sobre cada um deles',
-        ('Emissão por Setor', 'Emissão de Tonelada por Ano', 'Emissão por País', 'Fechar Gráficos'),
+        ('Emissão por Setor', 'Comparação de Emissão em Toneladas por Ano', 'Emissão por País', 'Fechar Gráficos'),
         index = None,
         placeholder = 'Selecione um Gráfico'
     )
@@ -97,7 +97,7 @@ with st.sidebar:
     )
 
     # Navegação para a alteração do país que será exibido a emissão de gás carbono
-    nav_pais = st.select_slider(
+    nav_pais = st.selectbox(
         'Navegue por esta barra para alterar a exibição da emissão de gás de países específicos',
         ['China', 'Estados Unidos', 'União Europeia', 'Índia', 'Rússia', 'Japão', 'Brasil', 'Indonésia', 'Iran', 'Coreia do Sul']
     )
@@ -159,22 +159,22 @@ def comparacao_ano():
 
 if option == "Emissão por Setor":
     st.header('Emissão Anual de Gases por Setor Industrial')
-    st.write('Esse gráfico remete à média emissão de gases por ano por diversos setores industriais.')
-    st.write('No gráfico houve uma pequena simplificação em algumas partes para melhor observação visual, as repartições serão melhores explicadas.')
-    st.write('Energia remete à elétrica, petróleo e carvão;')
-    st.write('Terra remete ao uso, mudança de uso da terra e silvicultura;')
-    st.write('Resíduos remete à praticamente todo resíduo humano, incluindo aterros e águas residuais.')
     setores_emissao()
-elif option == "Emissão de Tonelada por Ano":
-    st.header('Emissão de Anual de Gases desde 1950')
-    st.write('Esse gráfico remete à emissão de gás carbono por toneladas emitidos por ano desde os primeiros registros feitos com precisão, em 1950.')
+    st.write('<p class= "subtitles"> Esse gráfico remete à média emissão de gases por ano por diversos setores industriais. </p>', unsafe_allow_html= True)
+    st.write('<p class= "subtitles"> No gráfico houve uma pequena simplificação em algumas partes para melhor observação visual, as repartições serão melhores explicadas. </p>', unsafe_allow_html= True)
+    st.write('<p class= "subtitles"> Energia remete à elétrica, petróleo e carvão; </p>', unsafe_allow_html= True)
+    st.write('<p class= "subtitles"> Terra remete ao uso, mudança de uso da terra e silvicultura; </p>', unsafe_allow_html= True)
+    st.write('<p class= "subtitles"> Resíduos remete à praticamente todo resíduo humano, incluindo aterros e águas residuais.</p>', unsafe_allow_html= True)
+elif option == "Comparação de Emissão em Toneladas por Ano":
+    st.header('Comparação de Emissão desde a Primeira Medição')
     comparacao_ano()
+    st.write('<p class = "subtitles"> Essa comparação remete à primeira medição disponível de gás carbono e quanto em toneladas essa emissão subiu nos anos ao qual temos dados </p>', unsafe_allow_html= True)
 elif option == 'Emissão por País':
     st.header('Emissão de Gases por País')
-    st.write('Esse gráfico remete à emissão de gás carbono por país, principalmente os dez principais que mais causam a emissão deste gás anualmente, os dados expõe tanto a porcentagem quanto a quantidade em toneladas desses dados.',)
-    st.write('Juntos esses países emitem em média, 68,5% e 37702,16 de toda a emissão mundial em um ano')
-    st.write('As cores do gráfico ficam cada vez mais escuras a medida que a quantidade em porcentagem de emissão de gases aumenta.')
     paises()
+    st.write('<p class = "subtitles"> Esse gráfico remete à emissão de gás carbono por país, principalmente os dez principais que mais causam a emissão deste gás anualmente, os dados expõe tanto a porcentagem quanto a quantidade em toneladas desses dados. </p>', unsafe_allow_html= True)
+    st.write('<p class = "subtitles"> Juntos esses países emitem em média, 68,5% e 37702,16 de toda a emissão mundial em um ano. </p>', unsafe_allow_html= True)
+    st.write('<p class = "subtitles"> As cores do gráfico ficam cada vez mais escuras a medida que a quantidade em porcentagem de emissão de gases aumenta. </p>', unsafe_allow_html= True)
 else:
     st.empty()
 
