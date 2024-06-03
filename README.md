@@ -3,10 +3,10 @@
 
 ## Instruções de Uso
 
-### Tecnologias Utilizadas 
-#### Linguagem de Programação:
+## Tecnologias Utilizadas 
+### Linguagem de Programação:
     Python
-#### Frameworks/Bibliotecas:
+### Frameworks/Bibliotecas:
       Streamlit: Criação de interface de aplicação web interativa
       Pandas: Manipulação e análise de dados
       Plotly Express: Criação de gráficos interativos
