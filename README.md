@@ -69,13 +69,12 @@ O objetivo desta pesquisa é alertar sobre o aumento significativo das emissões
 
 
 ## Resultados:
-
-
-  Emissões por País: Identificação dos países com maiores emissões de CO₂ e análise de suas contribuições percentuais ao total global.
-  
-  Tendências Anuais: Avaliação do aumento das emissões ano a ano, destacando períodos de crescimento mais acentuado.
-  
-  Setores Econômicos: Determinação dos setores econômicos que mais contribuem para as emissões de CO₂, permitindo direcionar esforços de mitigação de forma mais eficaz.
+### Emissões por País:
+* Identificação dos países com maiores emissões de CO₂ e análise de suas contribuições percentuais ao total global.
+### Tendências Anuais: 
+* Avaliação do aumento das emissões ano a ano, destacando períodos de crescimento mais acentuado.
+### Setores Econômicos: 
+* Determinação dos setores econômicos que mais contribuem para as emissões de CO₂, permitindo direcionar esforços de mitigação de forma mais eficaz.
 
 
 
