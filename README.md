@@ -27,8 +27,14 @@
       Plotly Graph Objects: Criação de gráficos interativos
     
 
-Dados: 
+## Dados:
 
+### Arquivos .csv
+"Emissão.csv" remete à quantidade de gás carbono por tonelada emitidos na atmosfera em seus respectivos anos;
+"Países.csv" possuí dados dos dez países que mais emitem gás carbono com sua quantidade em toneladas e em porcentagem, em comparação com os demais países;
+"Setores.csv" compara quanto gás carbono cada uma das maiores indústrias do mundo emitem.
+
+### Arquivo docs
 [Dados brutos com fontes e gráficos](https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
 )
 
