@@ -29,9 +29,8 @@
 
 Dados: 
 
-Todos os dados originais e fontes usadas nesse desafio estaram no link a seguir, organizados por tópicos: 
-https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
-
+[Dados brutos com fontes e gráficos](https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
+)
 
 Visão Geral:
 
