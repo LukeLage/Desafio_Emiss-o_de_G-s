@@ -7,6 +7,9 @@ Os dados utilizados neste estudo incluem:
 * Aumento das emissões ao longo dos anos;
 * Percentual de emissões por setor econômico;
 
+## Objetivo:
+
+O objetivo desta pesquisa é alertar sobre o aumento significativo das emissões de CO₂ e como esse fenômeno pode impactar o planeta. Ao fornecer uma análise detalhada e baseada em dados históricos, esperamos conscientizar sobre a importância de adotar práticas sustentáveis e políticas ambientais eficazes.
 
 ## Instruções de Uso
 #### 1 - Clone este repositório em seu computador local.
@@ -55,29 +58,10 @@ Os dados utilizados neste estudo incluem:
 |Emissão.csv| Dados sobre a emissão de gás carbono de acordo com anos de medissão|
 |Setores.csv| Dados sobre emissão de gás carbono pelos setores da indústria|
 
-Visão Geral:
-
-
-Este projeto faz parte do desafio de Python do Projeto Desenvolve Itabira. O objetivo principal é analisar e expor o aumento das emissões de dióxido de carbono (CO₂) na atmosfera desde 1949, a data mais antiga para a qual os dados estavam disponíveis. Os dados utilizados neste estudo incluem:
 
 
 
-Objetivo:
-
-O objetivo desta pesquisa é alertar sobre o aumento significativo das emissões de CO₂ e como esse fenômeno pode impactar o planeta. Ao fornecer uma análise detalhada e baseada em dados históricos, esperamos conscientizar sobre a importância de adotar práticas sustentáveis e políticas ambientais eficazes.
-
-
-Metodologia:
-
-  Coleta de Dados: Foram coletados dados de emissões de CO₂ desde 1949, abrangendo diversos países e setores.
-  
-  Análise de Dados: Foi realizada uma análise detalhada para identificar tendências de aumento das emissões ao longo dos anos e a contribuição de cada país e setor.
-  
-  Visualização: Utilização de ferramentas de visualização para apresentar os dados de forma clara e intuitiva, facilitando a compreensão dos padrões e das áreas de maior preocupação.
-
-
-
-Resultados:
+## Resultados:
 
 
   Emissões por País: Identificação dos países com maiores emissões de CO₂ e análise de suas contribuições percentuais ao total global.
@@ -88,7 +72,7 @@ Resultados:
 
 
 
-Conclusão: 
+## Conclusão: 
 
 A pesquisa demonstra um aumento abrupto das emissões de CO₂ desde 1949, com impactos potencialmente devastadores para o meio ambiente e a saúde global. A conscientização sobre esses dados é fundamental para promover mudanças e adotar estratégias que visem à redução das emissões, protegendo assim o futuro do nosso planeta.
 
