@@ -40,9 +40,16 @@ O objetivo desta pesquisa é alertar sobre o aumento significativo das emissões
 ## Dados:
 
 ### Arquivos .csv
-* "Emissão.csv" remete à quantidade de gás carbono por tonelada emitidos na atmosfera em seus respectivos anos;
-* "Países.csv" possuí dados dos dez países que mais emitem gás carbono com sua quantidade em toneladas e em porcentagem, em comparação com os demais países;
-* "Setores.csv" compara quanto gás carbono cada uma das maiores indústrias do mundo emitem.
+* "Emissão.csv" remete à quantidade de gás carbono por tonelada emitidos na atmosfera em seus respectivos anos:
+        "Anos" remete aos anos que houveram emissãoo de gás carbono;
+        "Toneladas" à quantidade de toneladas de gás carbono emitidas naquele ano;
+* "Países.csv" possuí dados dos dez países que mais emitem gás carbono com sua quantidade em toneladas e em porcentagem, em comparação com os demais países:
+        "Países" remetem aos países ao qual foram feitos as medições de porcentagem e toneladas emitidos, "demais países" são os outros países não inclusos no top 10;
+        "Porcentagem" se dá à porcentagem de quanto do gás carbono emitido na atmosfera em um ano, aquele país colaborou;
+        "Toneladas" é a quantidade do gás emitido na atmosfera em um ano por aquele país;
+* "Setores.csv" compara quanto gás carbono cada uma das maiores indústrias do mundo emitem:
+        "Setores" são os setores econômigos da indústria ao qual entraram nessa pesquisa para comparação de emissão de gás;
+        "Porcentagem" é com quanto da emissão total aquele setor colaborou.
 
 ### Arquivo docs
 [Dados brutos com fontes e gráficos](https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
