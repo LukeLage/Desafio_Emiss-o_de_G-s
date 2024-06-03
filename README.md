@@ -86,4 +86,4 @@ Este projeto reflete a importância de abordar questões ambientais com seriedad
 ## Contato: 
 
 ### Programador: Luke Malaquias Lage
-[LinkedIn] (https://www.linkedin.com/in/luke-malaquias-lage-04022a232/) 
+[LinkedIn](https://www.linkedin.com/in/luke-malaquias-lage-04022a232/) 
