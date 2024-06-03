@@ -2,6 +2,20 @@
 
 
 ## Instruções de Uso
+#### 1 - Clone este repositório em seu computador local.
+
+#### 2 - Baixe o VS Code em seu computador e o abra.
+
+#### 3 - Instale as bibliotecas necessárias da seguinte maneira no terminal de seu VS Code:
+
+    pip install streamlit pandas scikit-learn matplotlib
+
+#### 4 - Execute o código Python da seguinte maneira em seu terminal VS Code:
+
+    streamlit run app.py
+
+#### 5 - Clique no link que seu terminal oferecerá, assim abrindo o programa com a biblioteca streamlit.
+
 
 ## Tecnologias Utilizadas 
 ### Linguagem de Programação:
@@ -17,20 +31,6 @@ Dados:
 
 Todos os dados originais e fontes usadas nesse desafio estaram no link a seguir, organizados por tópicos: 
 https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
-
-
-
-Tecnologias utilizadas:
-
-  Linguagens de programação: Python
-
-    Frameworks/Bibliotecas:
-    
-    Streamlit: Criação de interfaces interativas para visualização dos resultados do modelo
-    
-    Pandas: Manipulação e análise de dados
-
-    Plotly Express: Visualização de dados em formato de gráficos
 
 
 Visão Geral:
@@ -73,22 +73,6 @@ Resultados:
   
   Setores Econômicos: Determinação dos setores econômicos que mais contribuem para as emissões de CO₂, permitindo direcionar esforços de mitigação de forma mais eficaz.
 
-
-Instruções para Execução: 
-
-1 - Clone este repositório em seu computador local.
-
-2 - Baixe o VS Code em seu computador e o abra.
-
-3 - Instale as bibliotecas necessárias da seguinte maneira no terminal de seu VS Code:
-
-    pip install streamlit pandas scikit-learn matplotlib
-
-4 - Execute o código Python da seguinte maneira em seu terminal VS Code:
-
-    streamlit run app.py
-
-5 - Clique no link que seu terminal oferecerá, assim abrindo o programa com a biblioteca streamlit.
 
 
 Conclusão: 
