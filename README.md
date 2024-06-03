@@ -1,6 +1,17 @@
-Título: Emissão de Gás Carbono na Atmosfera ao Longo dos Anos
+# Estátisticas de Emissão de Gás Carbono na Atmosfera
 
 
+## Instruções de Uso
+
+### Tecnologias Utilizadas 
+#### Linguagem de Programação:
+    Python
+#### Frameworks/Bibliotecas:
+      Streamlit: Criação de interface de aplicação web interativa
+      Pandas: Manipulação e análise de dados
+      Plotly Express: Criação de gráficos interativos
+      Plotly Graph Objects: Criação de gráficos interativos
+    
 
 Dados: 
 
