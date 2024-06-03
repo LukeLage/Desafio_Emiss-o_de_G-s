@@ -8,11 +8,11 @@
 
 #### 3 - Instale as bibliotecas necessárias da seguinte maneira no terminal de seu VS Code:
 
-    pip install streamlit pandas scikit-learn matplotlib
+    pip install streamlit pandas plotly
 
 #### 4 - Execute o código Python da seguinte maneira em seu terminal VS Code:
 
-    streamlit run app.py
+    streamlit run gases.py
 
 #### 5 - Clique no link que seu terminal oferecerá, assim abrindo o programa com a biblioteca streamlit.
 
