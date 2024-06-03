@@ -1,5 +1,12 @@
 # Estátisticas de Emissão de Gás Carbono na Atmosfera
 
+## Visão Geral:
+Este projeto faz parte do desafio de Python do Projeto Desenvolve Itabira. O objetivo principal é analisar e expor o aumento das emissões de dióxido de carbono (CO₂) na atmosfera desde 1949, a data mais antiga para a qual os dados estavam disponíveis, além dos países e setores da indústria que mais emitem o gás.
+Os dados utilizados neste estudo incluem:
+* Quantidade de CO₂ emitida anualmente por país em toneladas e sua comparação estátistica com porcentagem;
+* Aumento das emissões ao longo dos anos;
+* Percentual de emissões por setor econômico;
+
 
 ## Instruções de Uso
 #### 1 - Clone este repositório em seu computador local.
@@ -52,15 +59,6 @@ Visão Geral:
 
 
 Este projeto faz parte do desafio de Python do Projeto Desenvolve Itabira. O objetivo principal é analisar e expor o aumento das emissões de dióxido de carbono (CO₂) na atmosfera desde 1949, a data mais antiga para a qual os dados estavam disponíveis. Os dados utilizados neste estudo incluem:
-
-
-  Quantidade de CO₂ emitida por país em toneladas.
-  
-  Percentual de emissões por país.
-  
-  Aumento das emissões ano a ano.
-  
-  Percentual de emissões por setor econômico.
 
 
 
