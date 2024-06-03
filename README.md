@@ -38,6 +38,16 @@
 [Dados brutos com fontes e gráficos](https://docs.google.com/document/d/1J262HJvC8yMbw2kXbW4e1Yxf2-N2ifQlEYi5bC1h6bc/edit?usp=sharing
 )
 
+## Projeto
+
+|Arquivo|Função|
+| :-------- | :------- |
+|Gases.py| Arquivo contendo o código do projeto|
+|Gases.css| Arquivo contendo a estilização do projeto|
+|Países.csv| Dados sobre emissão de gás dos dez países mais emissores|
+|Emissão.csv| Dados sobre a emissão de gás carbono de acordo com anos de medissão|
+|Setores.csv| Dados sobre emissão de gás carbono pelos setores da indústria|
+
 Visão Geral:
 
 
