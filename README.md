@@ -29,7 +29,7 @@ O objetivo desta pesquisa é alertar sobre o aumento significativo das emissões
 
 ## Tecnologias Utilizadas 
 ### Linguagem de Programação:
-    Python
+    Python 3.11.9
 ### Frameworks/Bibliotecas:
       Streamlit: Criação de interface de aplicação web interativa
       Pandas: Manipulação e análise de dados
