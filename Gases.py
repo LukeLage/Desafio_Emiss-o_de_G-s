@@ -139,7 +139,7 @@ metric3.metric (
 
 def comparacao_ano():
     year = st.select_slider(
-        'Selecione o ano que você deseja ver a comparação com a primeira medição',
+        'Na barra abaixo, navegue entre os anos para comparação de medições de gás carbono com a primeira medição concreta disponível.',
         [1949, 1950, 1989, 2000, 2019, 2021]
     )
     emissao_ano_filtro = emissao_df [emissao_df['Anos'] == year] # Filtra o dataframe por ano 
